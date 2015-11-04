@@ -11,9 +11,11 @@ version = '0.1'
 
 ext.junitVersion = '4.+'
 ext.springVersion = '4.2.2.RELEASE'
+ext.springBootVersion = '1.2.7.RELEASE'
 ext.slf4jVersion = '1.7.12'
 ext.aspectjVersion = '1.8.7'
-ext.servletAPIVersion = '3.0.1'
+ext.servletAPIVersion = '3.1.0'
+ext.restfuseVersion = '1.2.0'
 
 task wrapper(type: Wrapper) {
     gradleVersion = '2.8'
@@ -41,6 +43,7 @@ dependencies {
     compile("org.springframework:spring-context:${springVersion}") {
         exclude group: "commons-logging"
     }
+    compile"org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
     compile "org.springframework:spring-webmvc:${springVersion}"
     compile "org.springframework:spring-test:${springVersion}"
 
@@ -50,4 +53,5 @@ dependencies {
     compile "org.aspectj:aspectjweaver:${aspectjVersion}"
 
     compile "javax.servlet:javax.servlet-api:${servletAPIVersion}"
+    compile "com.restfuse:com.eclipsesource.restfuse:${restfuseVersion}"
 }

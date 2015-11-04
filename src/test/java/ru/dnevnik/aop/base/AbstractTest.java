@@ -10,9 +10,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 import ru.dnevnik.aop.configuration.WebConfig;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
@@ -49,7 +47,7 @@ public abstract class AbstractTest {
 
     @Test
     public void anonymousPost() throws Exception {
-        mockMvc.perform(post("/put").param("id", "51").param("name", "My Piter"))
+        mockMvc.perform(post("/put").param("id", "51").param("name", "This is Piter, babe"))
                 .andExpect(status().isForbidden());
     }
 
@@ -61,7 +59,7 @@ public abstract class AbstractTest {
 
     @Test
     public void authenticatedPost() throws Exception {
-        mockMvc.perform(post("/put").param("id", "51").param("name", "My Piter").param("user", "TestUser"))
+        mockMvc.perform(post("/put").param("id", "51").param("name", "This is Piter, babe").param("user", "TestUser"))
                 .andExpect(status().isOk());
     }
 
